@@ -27,4 +27,4 @@ Update your Firebase credentials in `frontend/pages/index.js` and backend upload
 
 ## Deployment
 - Railway for backend
-- Replit or Vercel for frontend
+- Replit  for frontend
