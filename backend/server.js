@@ -2,6 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const uploadRoute = require('./routes/upload');
+const fs = require("fs");
+
+// Create /uploads if it doesn't exist
+const uploadsDir = "./uploads";
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
 
 const app = express();
 const corsOptions = {
