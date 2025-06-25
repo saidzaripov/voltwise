@@ -17,7 +17,7 @@ if (!fs.existsSync(uploadDir)) {
 app.use(cors({
   origin: [
     'https://voltwise-production.up.railway.app',
-    'https://<your-replit-domain>.replit.dev'
+    'https://voltwise-developerteste5.replit.dev'
   ],
   methods: ['GET', 'POST'],
   credentials: true,
