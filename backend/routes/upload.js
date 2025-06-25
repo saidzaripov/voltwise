@@ -14,20 +14,21 @@ router.post('/', async (req, res) => {
 
   const bill = req.files.energyBill;
 
-  // ✅ Ensure uploads folder exists
   const uploadDir = path.join(__dirname, '..', 'uploads');
   if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
   }
 
   const uploadPath = path.join(uploadDir, bill.name);
-  await bill.mv(uploadPath);
+  console.log(`Received file: ${bill.name}, size: ${bill.size} bytes`);
+  console.log(`Saving to: ${uploadPath}`);
 
   try {
+    await bill.mv(uploadPath);
     const parsedText = await parseEnergyData(uploadPath);
     res.json({ success: true, data: parsedText });
   } catch (error) {
-    console.error("Parsing failed:", error.message);
+    console.error("Upload or parsing failed:", error.message);
     res.status(500).json({ success: false, message: error.message });
   }
 });
