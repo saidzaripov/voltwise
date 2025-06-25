@@ -4,7 +4,12 @@ const fileUpload = require('express-fileupload');
 const uploadRoute = require('./routes/upload');
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: "*", // or whitelist only Replit origin
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(fileUpload());
 app.use('/api/upload', uploadRoute);
